@@ -1,0 +1,66 @@
+prompt_s_ans = f"""
+INSTRUCTIONS:
+Your task is to determine the correctness of the final answer within the PROPOSED SOLUTION.
+Critically verify the final answer against the TASK DESCRIPTION and the reasoning steps provided in the PROPOSED SOLUTION.
+Do NOT use external knowledge. Focus only on internal consistency and accuracy based on the given problem.
+
+Your response must strictly follow the required format:
+SCORE: [0.0-1.0]
+(0.0 = completely incorrect, 1.0 = perfectly correct)
+
+TASK DESCRIPTION:
+[TASK_DESCRIPTION]
+
+PROPOSED SOLUTION:
+[PROPOSED_SOLUTION]
+"""
+
+prompt_s_comp = f"""
+INSTRUCTIONS:
+Your task is to evaluate the PROPOSED SOLUTION's understanding of the TASK DESCRIPTION.
+Identify all explicit and implicit constraints, conditions, and specific requests in the TASK DESCRIPTION.
+Assess how accurately and comprehensively the PROPOSED SOLUTION addressed these elements, demonstrating full comprehension.
+
+Your response must strictly follow the required format:
+SCORE: [0.0-1.0]
+(0.0 = no comprehension, 1.0 = full and accurate comprehension)
+
+TASK DESCRIPTION:
+[TASK_DESCRIPTION]
+
+PROPOSED SOLUTION:
+[PROPOSED_SOLUTION]
+"""
+
+prompt_s_calc = f"""
+INSTRUCTIONS:
+Your task is to verify the validity of all numerical calculations and logical steps within the PROPOSED SOLUTION.
+For each calculation or logical transition, independently recompute or re-evaluate it.
+If any numerical or logical discrepancy is found, it indicates an error.
+
+Your response must strictly follow the required format:
+SCORE: [0.0-1.0]
+(0.0 = many errors, 1.0 = all calculations and logical steps are valid)
+
+TASK DESCRIPTION:
+[TASK_DESCRIPTION]
+
+PROPOSED SOLUTION:
+[PROPOSED_SOLUTION]
+"""
+
+prompt_s_form = f"""
+INSTRUCTIONS:
+Your task is to assess if the PROPOSED SOLUTION conforms to the expected output format requirements.
+Consider if specific units are used, if the answer is structured as implicitly or explicitly requested (e.g., numeric only, step-by-step, \\boxed{} formatting), and if all parts of the response are appropriately presented.
+
+Your response must strictly follow the required format:
+SCORE: [0.0-1.0]
+(0.0 = completely incorrect format, 1.0 = perfectly formatted)
+
+TASK DESCRIPTION:
+[TASK_DESCRIPTION]
+
+PROPOSED SOLUTION:
+[PROPOSED_SOLUTION]
+"""

@@ -1,0 +1,17 @@
+python nighttime_model.py \
+    --model_path "../../models/qwen/Qwen2___5-1___5B-Instruct" \
+    --latent_json_path "json/path" \
+    --checkpoint_path "../../models/latent/continue_model.pt" \
+    --batch_size 8 \
+    --lr 2e-5 \
+    --epochs 50 \
+    --max_norm 0.5 \
+    --out_dim 2048 \
+    --num_tokens 20 \
+    --reduce_dim 256 \
+    --max_length 256 \
+    --use_reducer_for_target \
+    --continue_training \
+    --device "cuda" \
+    --output_dir "../../models/latent" \
+    --output_filename "evolve_model.pt"

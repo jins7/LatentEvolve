@@ -1,0 +1,20 @@
+python daytime_generation.py \
+    --dataset "../../datasets/train/gsm8k_1.json" \
+    --model_name_or_path "../../models/Qwen/Qwen3-4b-Instruct-2507" \
+    --output_dir "./output" \
+    --start_data_idx 0 \
+    --end_data_idx 1000 \
+    --solver_prompt_idx 0 \
+    --seed 42 \
+    --lr 0.05 \
+    --grad_clip 1.0 \
+    --k 0.2 \
+    --max_num_steps 10 \
+    --max_new_tokens 1024 \
+    --rule_format_string "boxed" \
+    --reward_threshold -0.2 \
+    --top_n 7 \
+    --alpha 0.1 \
+    --min_history_size 10 \
+    --device "cuda" \
+    --output_json_path "json/path"
