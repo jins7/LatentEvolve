@@ -73,8 +73,13 @@ def main():
 
     for i in tqdm(range(0, len(dataset)), desc="Evaluating"):
         example = dataset[i]
-        prompt = example["question"] + "\nPlease provide a step-by-step answer, and must put your final answer within \\boxed{}"
-        # prompt = example["question"] + "\nPlease step-by-step answer the following multiple-choice question by selecting the correct option (A, B, C or D). Your response must ends up with the following format:The correct answer is {your answer option letter here}."
+        math_prompt = "Please provide a step-by-step answer, and must put your final answer within \\boxed{}"
+        choice_prompt = "\nPlease step-by-step answer the following multiple-choice question by selecting the correct option (A, B, C or D). Your response must ends up with the following format:The correct answer is {your answer option letter here}."
+        messages = [
+            {"role": "system", "content": math_prompt},
+            {"role": "user", "content": example["question"]},
+        ]
+        prompt = qwen_tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
         raw_prompt = example["question"]
         formatted_prompt = example["formatted"]
         with torch.no_grad():
